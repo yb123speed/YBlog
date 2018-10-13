@@ -26,6 +26,23 @@ namespace YBlog.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            #region Swagger
+            services.AddSwaggerGen(o =>
+            {
+                o.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                    Version = "v0.1.0",
+                    Title = "YBlog.Core API",
+                    Description = "框架说明文档",
+                    TermsOfService = "None",
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact{
+                        Name = "YBlog.Core",
+                        Email = "yb123speed@outlook.com",
+                        Url = "http://www.chaney.club"
+                    }
+                });
+            });
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +51,13 @@ namespace YBlog.Core
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                #region Swagger
+                app.UseSwagger();
+                app.UseSwaggerUI(o =>
+                {
+                    o.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+                });
+                #endregion
             }
             else
             {
