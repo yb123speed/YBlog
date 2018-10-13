@@ -48,6 +48,11 @@ namespace YBlog.Core
                 var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
                 var xmlPath = Path.Combine(basePath, "YBlog.Core.xml");
                 o.IncludeXmlComments(xmlPath,true);//默认的第二个参数是false，这个是controller的注释，记得修改
+
+                //Configure Models XML File
+                var xmlModelPath = Path.Combine(basePath, "YBlog.Core.Models.xml");//这个就是Model层的xml文件名
+                o.IncludeXmlComments(xmlPath, true);
+                o.IncludeXmlComments(xmlModelPath);
             });
             #endregion
         }
