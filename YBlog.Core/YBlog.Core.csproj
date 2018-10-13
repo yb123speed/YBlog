@@ -20,4 +20,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YBlog.Core.Models\YBlog.Core.Models.csproj" />
+  </ItemGroup>
+
 </Project>
