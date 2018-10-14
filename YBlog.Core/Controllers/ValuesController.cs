@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using YBlog.Core.Models;
 
 namespace YBlog.Core.Controllers
 {
@@ -40,9 +41,9 @@ namespace YBlog.Core.Controllers
         /// <summary>
         /// 创建对象
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="post"></param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Post post)
         {
         }
 
