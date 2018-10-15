@@ -60,12 +60,15 @@ namespace YBlog.Core
                 #region Token绑定到ConfigureServices
                 //添加header验证信息
                 //o.OperationFilter<SwaggerHeader>();
-                var security = new Dictionary<string, IEnumerable<string>> { { "YBlog.Core",new string[] { } } };
+                var security = new Dictionary<string, IEnumerable<string>>
+                {
+                    { "YBlog.Core",new string[] { } }
+                };
                 o.AddSecurityRequirement(security);
                 //方案名称"YBlog.Core"可自定义，上下一致即可
                 o.AddSecurityDefinition("YBlog.Core", new ApiKeyScheme
                 {
-                    Description = "JWT授权（数据将在请求头中进行传输）直接在下框输入{token}\"",
+                    Description = "JWT授权（数据将在请求头中进行传输）直接在下框输入{token}",
                     Name = "Authorization", //jwt默认的参数名称
                     In = "header", //jwt默认存放Authorization信息的位置（请求头中）
                     Type = "apiKey"
@@ -109,7 +112,9 @@ namespace YBlog.Core
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseJwtTokenAuthMiddleware();
+
             app.UseMvc();
         }
     }

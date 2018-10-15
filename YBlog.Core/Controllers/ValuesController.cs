@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YBlog.Core.Models;
 
@@ -12,6 +13,7 @@ namespace YBlog.Core.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "Admin")]
     public class ValuesController : ControllerBase
     {
         // GET api/values
