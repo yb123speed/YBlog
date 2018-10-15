@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YBlog.Core.Models</name>
+    </assembly>
+    <members>
+        <member name="T:YBlog.Core.Models.Post">
+            <summary>
+            Post
+            </summary>
+        </member>
+    </members>
+</doc>
