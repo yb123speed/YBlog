@@ -4,6 +4,43 @@
         <name>YBlog.Core</name>
     </assembly>
     <members>
+        <member name="M:YBlog.Core.AuthHelper.JwtHelper.IssueJWT(YBlog.Core.AuthHelper.TokenModelJWT)">
+            <summary>
+            颁发JWT字符串
+            </summary>
+            <param name="tokenModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBlog.Core.AuthHelper.JwtHelper.SerializeJWT(System.String)">
+            <summary>
+            解析
+            </summary>
+            <param name="jwtStr"></param>
+            <returns></returns>
+        </member>
+        <member name="P:YBlog.Core.AuthHelper.TokenModelJWT.Uid">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.AuthHelper.TokenModelJWT.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.AuthHelper.TokenModelJWT.Work">
+            <summary>
+            职能
+            </summary>
+        </member>
+        <member name="M:YBlog.Core.Controllers.LoginController.GetJWTStr(System.String,System.String)">
+            <summary>
+            获取JWT的方法
+            </summary>
+            <param name="name"></param>
+            <param name="pass"></param>
+            <returns></returns>
+        </member>
         <member name="T:YBlog.Core.Controllers.ValuesController">
             <summary>
             Values控制器
@@ -22,11 +59,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:YBlog.Core.Controllers.ValuesController.Post(System.String)">
+        <member name="M:YBlog.Core.Controllers.ValuesController.Post(YBlog.Core.Models.Post)">
             <summary>
             创建对象
             </summary>
-            <param name="value"></param>
+            <param name="post"></param>
         </member>
         <member name="M:YBlog.Core.Controllers.ValuesController.Put(System.Int32,System.String)">
             <summary>
