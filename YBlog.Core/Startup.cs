@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,7 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using YBlog.Core.AuthHelper;
 
 namespace YBlog.Core
 {
@@ -76,6 +80,33 @@ namespace YBlog.Core
                 #endregion
             });
             #endregion
+
+            #region 认证
+            services.AddAuthentication(o=> 
+            {
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(o => 
+            {
+                o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidIssuer = "YBlog.Core",
+                    ValidAudience = "wr",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtHelper.secretKey)),
+                    RequireSignedTokens = true,
+                    // 将下面两个参数设置为false，可以不验证Issuer和Audience，但是不建议这样做。
+                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidateIssuerSigningKey = true,
+                    // 是否要求Token的Claims中必须包含 Expires
+                    RequireExpirationTime = true,
+                    // 是否验证Token有效期，使用当前时间与Token的Claims中的NotBefore和Expires对比
+                    ValidateLifetime = true
+                };
+            });
+            #endregion
+
 
             #region Token服务注册
             services.AddSingleton<IMemoryCache>(factory =>
