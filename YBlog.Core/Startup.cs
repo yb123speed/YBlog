@@ -81,7 +81,7 @@ namespace YBlog.Core
             });
             #endregion
 
-            #region 认证
+            #region JwtBearer认证
             services.AddAuthentication(o=> 
             {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -106,7 +106,6 @@ namespace YBlog.Core
                 };
             });
             #endregion
-
 
             #region Token服务注册
             services.AddSingleton<IMemoryCache>(factory =>
