@@ -4,6 +4,26 @@
         <name>YBlog.Core.Models</name>
     </assembly>
     <members>
+        <member name="T:YBlog.Core.Models.MessageModel`1">
+            <summary>
+            通用返回信息类
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.MessageModel`1.Success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.MessageModel`1.Msg">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.MessageModel`1.Data">
+            <summary>
+            返回数据集合
+            </summary>
+        </member>
         <member name="T:YBlog.Core.Models.Post">
             <summary>
             Post
