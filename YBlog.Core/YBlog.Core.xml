@@ -33,6 +33,19 @@
             职能
             </summary>
         </member>
+        <member name="T:YBlog.Core.Controllers.BlogController">
+            <summary>
+            博客
+            </summary>
+        </member>
+        <member name="M:YBlog.Core.Controllers.BlogController.Get(System.Int32,System.Int32)">
+            <summary>
+            两数相加
+            </summary>
+            <param name="i">参数1</param>
+            <param name="j">参数2</param>
+            <returns></returns>
+        </member>
         <member name="M:YBlog.Core.Controllers.LoginController.GetJWTStr(System.String,System.String)">
             <summary>
             获取JWT的方法

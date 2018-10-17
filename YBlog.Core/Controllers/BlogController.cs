@@ -10,6 +10,9 @@ using YBlog.Core.Services;
 
 namespace YBlog.Core.Controllers
 {
+    /// <summary>
+    /// 博客
+    /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
@@ -17,6 +20,12 @@ namespace YBlog.Core.Controllers
     public class BlogController : ControllerBase
     {
         // GET: api/Blog
+        /// <summary>
+        /// 两数相加
+        /// </summary>
+        /// <param name="i">参数1</param>
+        /// <param name="j">参数2</param>
+        /// <returns></returns>
         [HttpGet]
         public int Get(int i, int j)
         {
