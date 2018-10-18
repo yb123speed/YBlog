@@ -24,6 +24,36 @@
             返回数据集合
             </summary>
         </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.Id">
+            <summary>
+            分类ID
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.Createdate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.ImgUrl">
+            <summary>
+            广告图片
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.Title">
+            <summary>
+            广告标题
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.Url">
+            <summary>
+            广告链接
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.Advertisement.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
         <member name="T:YBlog.Core.Models.Post">
             <summary>
             Post
