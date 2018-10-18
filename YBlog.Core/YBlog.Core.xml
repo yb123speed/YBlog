@@ -46,6 +46,13 @@
             <param name="j">参数2</param>
             <returns></returns>
         </member>
+        <member name="M:YBlog.Core.Controllers.BlogController.Get(System.Int32)">
+            <summary>
+            根据id查询Advertisement
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:YBlog.Core.Controllers.LoginController.GetJWTStr(System.String,System.String)">
             <summary>
             获取JWT的方法

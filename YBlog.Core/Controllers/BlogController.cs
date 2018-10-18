@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using YBlog.Core.IServices;
+using YBlog.Core.Models.Models;
 using YBlog.Core.Services;
 
 namespace YBlog.Core.Controllers
@@ -16,7 +17,7 @@ namespace YBlog.Core.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     public class BlogController : ControllerBase
     {
         // GET: api/Blog
@@ -34,10 +35,16 @@ namespace YBlog.Core.Controllers
         }
 
         // GET: api/Blog/5
+        /// <summary>
+        /// 根据id查询Advertisement
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public IList<Advertisement> Get(int id)
         {
-            return "value";
+            IAdvertisementServices advertisementServices = new AdvertisementServices();
+            return advertisementServices.Query(d => d.Id == id);
         }
 
         // POST: api/Blog
