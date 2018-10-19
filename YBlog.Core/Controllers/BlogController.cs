@@ -30,8 +30,8 @@ namespace YBlog.Core.Controllers
         [HttpGet]
         public int Get(int i, int j)
         {
-            IAdvertisementServices advertisementServices = new AdvertisementServices();
-            return advertisementServices.Sum(i,j);
+            //IAdvertisementServices advertisementServices = new AdvertisementServices();
+            return 0;//advertisementServices.Sum(i, j);
         }
 
         // GET: api/Blog/5
@@ -41,10 +41,10 @@ namespace YBlog.Core.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "Get")]
-        public IList<Advertisement> Get(int id)
+        public async Task<Advertisement> Get(int id)
         {
             IAdvertisementServices advertisementServices = new AdvertisementServices();
-            return advertisementServices.Query(d => d.Id == id);
+            return await advertisementServices.QueryByID(id);
         }
 
         // POST: api/Blog
