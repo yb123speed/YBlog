@@ -17,6 +17,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using YBlog.Core.AuthHelper;
+using YBlog.Core.Repository;
 
 namespace YBlog.Core
 {
@@ -33,6 +34,9 @@ namespace YBlog.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //数据库配置
+            BaseDBConfig.ConnectionString = Configuration.GetSection("AppSettings:SqlServer:SqlServerConnection").Value;
 
             #region Swagger
             services.AddSwaggerGen(o =>

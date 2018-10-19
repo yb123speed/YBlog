@@ -7,7 +7,8 @@ namespace YBlog.Core.Repository
 {
     public class BaseDBConfig
     {
-        public static string ConnectionString = File.ReadAllText(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory + "dbconnection.txt")).Trim();
+        public static string ConnectionString { get; set; }
+        //public static string ConnectionString = File.ReadAllText(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory + "dbconnection.txt")).Trim();
 
         //正常格式是
 
