@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +19,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using YBlog.Core.AuthHelper;
+using YBlog.Core.IServices;
 using YBlog.Core.Repository;
+using YBlog.Core.Services;
 
 namespace YBlog.Core
 {
@@ -31,7 +35,7 @@ namespace YBlog.Core
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -125,6 +129,24 @@ namespace YBlog.Core
                 o.AddPolicy("AdminOrClient", policy => policy.RequireRole("Admin","Client").Build());
             });
             #endregion
+
+            #region AutoFac
+
+            //实例化 AutoFac容器
+            var builder = new ContainerBuilder();
+
+            //注册要通过反射创建的组件
+            builder.RegisterType<AdvertisementServices>().As<IAdvertisementServices>();
+
+            //将services 填充AutoFac容器生成器
+            builder.Populate(services);
+
+            //使用已进行的组件登记创建容器
+            var ApplicationContainer = builder.Build();
+
+            #endregion
+
+            return new AutofacServiceProvider(ApplicationContainer); //第三方IOC接管
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
