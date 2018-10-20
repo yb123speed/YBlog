@@ -20,6 +20,21 @@ namespace YBlog.Core.Controllers
     //[Authorize(Policy = "Admin")]
     public class BlogController : ControllerBase
     {
+        #region private fields and constructor
+
+        IAdvertisementServices _advertisementServices;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="advertisementServices"></param>
+        public BlogController(IAdvertisementServices advertisementServices)
+        {
+            _advertisementServices = advertisementServices;
+        }
+
+        #endregion
+
         // GET: api/Blog
         /// <summary>
         /// 两数相加
@@ -43,8 +58,8 @@ namespace YBlog.Core.Controllers
         [HttpGet("{id}", Name = "Get")]
         public async Task<Advertisement> Get(int id)
         {
-            IAdvertisementServices advertisementServices = new AdvertisementServices();
-            return await advertisementServices.QueryByID(id);
+            //IAdvertisementServices advertisementServices = new AdvertisementServices();
+            return await _advertisementServices.QueryByID(id);
         }
 
         // POST: api/Blog
