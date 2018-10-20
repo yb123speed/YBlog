@@ -28,8 +28,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YBlog.Core.Common\YBlog.Core.Common.csproj" />
+    <ProjectReference Include="..\YBlog.Core.IRepository\YBlog.Core.IRepository.csproj" />
     <ProjectReference Include="..\YBlog.Core.IServices\YBlog.Core.IServices.csproj" />
     <ProjectReference Include="..\YBlog.Core.Models\YBlog.Core.Models.csproj" />
+    <ProjectReference Include="..\YBlog.Core.Repository\YBlog.Core.Repository.csproj" />
     <ProjectReference Include="..\YBlog.Core.Services\YBlog.Core.Services.csproj" />
   </ItemGroup>
 
