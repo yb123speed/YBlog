@@ -35,7 +35,7 @@ namespace YBlog.Core.AOP
                 Directory.CreateDirectory(path);
             }
 
-            string fileName = path + $@"\InterceptLog-{DateTime.Now.ToString("yyyyMMddHHmmss")}.log";
+            string fileName = path + $@"\InterceptLog-{DateTime.Now.ToString("yyyyMMdd")}.log";
 
             StreamWriter sw = File.AppendText(fileName);
             sw.WriteLine(dataIntercept);
