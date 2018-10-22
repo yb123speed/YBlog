@@ -54,6 +54,61 @@
             备注
             </summary>
         </member>
+        <member name="T:YBlog.Core.Models.Models.BlogArticle">
+            <summary>
+            博客文章
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BSubmitter">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BTitle">
+            <summary>
+            博客标题
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BCategory">
+            <summary>
+            类别
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BContent">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BTraffic">
+            <summary>
+            访问量
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BCommentNum">
+            <summary>
+            评论数量
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BUpdateTime">
+            <summary> 
+            修改时间
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BCreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.Models.BlogArticle.BRemark">
+            <summary>
+            备注
+            </summary>
+        </member>
         <member name="T:YBlog.Core.Models.Post">
             <summary>
             Post

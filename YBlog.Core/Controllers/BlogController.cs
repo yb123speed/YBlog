@@ -23,14 +23,17 @@ namespace YBlog.Core.Controllers
         #region private fields and constructor
 
         IAdvertisementServices _advertisementServices;
+        IBlogArticleServices _blogArticleServices;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="advertisementServices"></param>
-        public BlogController(IAdvertisementServices advertisementServices)
+        /// <param name="blogArticleServices"></param>
+        public BlogController(IAdvertisementServices advertisementServices,IBlogArticleServices blogArticleServices)
         {
             _advertisementServices = advertisementServices;
+            _blogArticleServices = blogArticleServices;
         }
 
         #endregion
@@ -78,6 +81,17 @@ namespace YBlog.Core.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        /// <summary>
+        /// 获取博客列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetBlogs")]
+        public async Task<List<BlogArticle>> GetBlogs()
+        {
+            return await _blogArticleServices.GetBlogs();
         }
     }
 }
