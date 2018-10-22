@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using YBlog.Core.AOP;
 using YBlog.Core.AuthHelper;
 using YBlog.Core.IServices;
 using YBlog.Core.Repository;
@@ -136,12 +138,20 @@ namespace YBlog.Core
             //实例化 AutoFac容器
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<BlogLogAOP>();//可以直接替换其他拦截器！一定要把拦截器进行注册
+
             //注册要通过反射创建的组件
             //builder.RegisterType<AdvertisementServices>().As<IAdvertisementServices>();
 
             var assemblyServices = Assembly.Load("YBlog.Core.Services");
             //指定已扫描程序集中的类型注册为提供所有其实现的接口
-            builder.RegisterAssemblyTypes(assemblyServices).AsImplementedInterfaces();
+            //builder.RegisterAssemblyTypes(assemblyServices).AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(assemblyServices)
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope()
+                .EnableInterfaceInterceptors()    //对目标类型启用接口拦截。拦截器将被确定，通过在类或接口上截取属性, 或添加 InterceptedBy ()
+                .InterceptedBy(typeof(BlogLogAOP));    //允许将拦截器服务的列表分配给注册。说人话就是，将拦截器加上要注入容器的的接口或者类上
 
             //备用方法
             //var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;//获取项目路径

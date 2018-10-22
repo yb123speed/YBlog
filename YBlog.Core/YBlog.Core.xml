@@ -4,6 +4,17 @@
         <name>YBlog.Core</name>
     </assembly>
     <members>
+        <member name="T:YBlog.Core.AOP.BlogLogAOP">
+            <summary>
+            拦截器BlogLogAOP 继承IIterceptor接口
+            </summary>
+        </member>
+        <member name="M:YBlog.Core.AOP.BlogLogAOP.Intercept(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            实例化IInterceptor唯一方法
+            </summary>
+            <param name="invocation">包含被拦截方法的信息</param>
+        </member>
         <member name="M:YBlog.Core.AuthHelper.JwtHelper.IssueJWT(YBlog.Core.AuthHelper.TokenModelJWT)">
             <summary>
             颁发JWT字符串
@@ -43,6 +54,7 @@
             构造函数
             </summary>
             <param name="advertisementServices"></param>
+            <param name="blogArticleServices"></param>
         </member>
         <member name="M:YBlog.Core.Controllers.BlogController.Get(System.Int32,System.Int32)">
             <summary>
