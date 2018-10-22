@@ -15,6 +15,16 @@
             </summary>
             <param name="invocation">包含被拦截方法的信息</param>
         </member>
+        <member name="T:YBlog.Core.AOP.ICaching">
+            <summary>
+            简单的缓存接口，只有查询和添加，以后会进行扩展
+            </summary>
+        </member>
+        <member name="T:YBlog.Core.AOP.MemoryCaching">
+            <summary>
+            实例化缓存接口ICaching
+            </summary>
+        </member>
         <member name="M:YBlog.Core.AuthHelper.JwtHelper.IssueJWT(YBlog.Core.AuthHelper.TokenModelJWT)">
             <summary>
             颁发JWT字符串

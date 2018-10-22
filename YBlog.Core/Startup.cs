@@ -42,6 +42,12 @@ namespace YBlog.Core
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            #region 依赖注入
+
+            services.AddScoped<ICaching, MemoryCaching>();
+
+            #endregion
+
             //数据库配置
             BaseDBConfig.ConnectionString = Configuration.GetSection("AppSettings:SqlServer:SqlServerConnection").Value;
 
@@ -139,6 +145,7 @@ namespace YBlog.Core
             var builder = new ContainerBuilder();
 
             builder.RegisterType<BlogLogAOP>();//可以直接替换其他拦截器！一定要把拦截器进行注册
+            builder.RegisterType<BlogCacheAOP>();
 
             //注册要通过反射创建的组件
             //builder.RegisterType<AdvertisementServices>().As<IAdvertisementServices>();
@@ -151,7 +158,8 @@ namespace YBlog.Core
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope()
                 .EnableInterfaceInterceptors()    //对目标类型启用接口拦截。拦截器将被确定，通过在类或接口上截取属性, 或添加 InterceptedBy ()
-                .InterceptedBy(typeof(BlogLogAOP));    //允许将拦截器服务的列表分配给注册。说人话就是，将拦截器加上要注入容器的的接口或者类上
+                .InterceptedBy(typeof(BlogLogAOP))
+                .InterceptedBy(typeof(BlogCacheAOP));    //允许将拦截器服务的列表分配给注册。说人话就是，将拦截器加上要注入容器的的接口或者类上
 
             //备用方法
             //var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;//获取项目路径
