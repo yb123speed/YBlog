@@ -12,6 +12,6 @@ namespace YBlog.Core.AOP
     {
         object Get(string cacheKey);
 
-        void Set(string cacheKey, object cacheValue);
+        void Set(string cacheKey, object cacheValue, TimeSpan? expiration=null);
     }
 }

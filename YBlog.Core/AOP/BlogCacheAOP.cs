@@ -77,7 +77,7 @@ namespace YBlog.Core.AOP
                 //存入缓存
                 if (!string.IsNullOrWhiteSpace(cacheKey))
                 {
-                    _cache.Set(cacheKey, invocation.ReturnValue);
+                    _cache.Set(cacheKey, invocation.ReturnValue,TimeSpan.FromHours(2));
                 }
             }
         }

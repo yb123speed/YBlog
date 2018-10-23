@@ -27,9 +27,17 @@ namespace YBlog.Core.AOP
             return _memoryCache.Get(cacheKey);
         }
 
-        public void Set(string cacheKey, object cacheValue)
+        public void Set(string cacheKey, object cacheValue, TimeSpan? expiration)
         {
-            _memoryCache.Set(cacheKey, cacheValue, TimeSpan.FromHours(2));
+            if (expiration == null)
+            {
+                _memoryCache.Set(cacheKey, cacheValue, TimeSpan.FromHours(2));
+            }
+            else
+            {
+                _memoryCache.Set(cacheKey, cacheValue, expiration.Value);
+            }
+            
         }
     }
 }
