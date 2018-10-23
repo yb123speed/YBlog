@@ -45,6 +45,7 @@ namespace YBlog.Core
             #region 依赖注入
 
             services.AddScoped<ICaching, MemoryCaching>();
+            services.AddScoped<IRedisCacheManager, RedisCacheManager>();
 
             #endregion
 

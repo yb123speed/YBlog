@@ -59,12 +59,13 @@
             博客
             </summary>
         </member>
-        <member name="M:YBlog.Core.Controllers.BlogController.#ctor(YBlog.Core.IServices.IAdvertisementServices,YBlog.Core.IServices.IBlogArticleServices)">
+        <member name="M:YBlog.Core.Controllers.BlogController.#ctor(YBlog.Core.IServices.IAdvertisementServices,YBlog.Core.IServices.IBlogArticleServices,YBlog.Core.IRedisCacheManager)">
             <summary>
             构造函数
             </summary>
             <param name="advertisementServices"></param>
             <param name="blogArticleServices"></param>
+            <param name="redisCacheManager"></param>
         </member>
         <member name="M:YBlog.Core.Controllers.BlogController.Get(System.Int32,System.Int32)">
             <summary>

@@ -24,16 +24,21 @@ namespace YBlog.Core.Controllers
 
         IAdvertisementServices _advertisementServices;
         IBlogArticleServices _blogArticleServices;
+        IRedisCacheManager _redisCacheManager; //缓存
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="advertisementServices"></param>
         /// <param name="blogArticleServices"></param>
-        public BlogController(IAdvertisementServices advertisementServices,IBlogArticleServices blogArticleServices)
+        /// <param name="redisCacheManager"></param>
+        public BlogController(IAdvertisementServices advertisementServices,
+            IBlogArticleServices blogArticleServices,
+            IRedisCacheManager redisCacheManager)
         {
             _advertisementServices = advertisementServices;
             _blogArticleServices = blogArticleServices;
+            _redisCacheManager = redisCacheManager;
         }
 
         #endregion
@@ -91,7 +96,18 @@ namespace YBlog.Core.Controllers
         [Route("GetBlogs")]
         public async Task<List<BlogArticle>> GetBlogs()
         {
-            return await _blogArticleServices.GetBlogs();
+            List<BlogArticle> blogs = new List<BlogArticle>();
+
+            if (_redisCacheManager.Get<object>("Redis.Blog") != null)
+            {
+                blogs = _redisCacheManager.Get<List<BlogArticle>>("Redis.Blog");
+            }
+            else
+            {
+                blogs = await _blogArticleServices.Query(d => d.BId > 5);
+                _redisCacheManager.Set("Redis.Blog", blogs, TimeSpan.FromHours(2));//缓存2小时
+            }
+            return blogs;
         }
     }
 }
