@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace YBlog.Core.Common.Attributes
+namespace YBlog.Core
 {
     /// <summary>
     /// 缓存特性
