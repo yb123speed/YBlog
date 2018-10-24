@@ -52,6 +52,30 @@ namespace YBlog.Core
             //数据库配置
             BaseDBConfig.ConnectionString = Configuration.GetSection("AppSettings:SqlServer:SqlServerConnection").Value;
 
+            #region CORS
+
+            services.AddCors(o => {
+                o.AddPolicy("AllRequests",policy=> 
+                {
+                    policy
+                    .AllowAnyOrigin() //允许同源
+                    .AllowAnyMethod() //允许任何方式
+                    .AllowAnyHeader()  //允许任何头
+                    .AllowCredentials(); //允许cookie
+                });
+                //↑↑↑↑↑↑↑注意正式环境不要使用这种全开放的处理↑↑↑↑↑↑↑↑↑↑
+
+                //一般采用这种方法
+                o.AddPolicy("", policy=> {
+                    policy
+                    .WithOrigins("http://127.0.0.1:1818", "http://localhost:8080", "http://localhost:8021", "http://localhost:8081", "http://localhost:1818", "http://blog.core.xxx.com", "")//支持多个域名端口
+                    .WithMethods("GET", "POST", "PUT", "DELETE")//请求方法添加到策略
+                    .WithHeaders("authorization");//标头添加到策略
+                });
+            });
+
+            #endregion
+
             #region Swagger
             services.AddSwaggerGen(o =>
             {
