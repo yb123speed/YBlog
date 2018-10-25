@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.DynamicProxy;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,6 +47,12 @@ namespace YBlog.Core
 
             services.AddScoped<ICaching, MemoryCaching>();
             services.AddScoped<IRedisCacheManager, RedisCacheManager>();
+
+            #endregion
+
+            #region AutoMapper
+
+            services.AddAutoMapper(typeof(Startup));
 
             #endregion
 

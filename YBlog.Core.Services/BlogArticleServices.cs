@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,13 @@ namespace YBlog.Core.Services
         #region private fields and constructor
 
         IBlogArticleRepository _blogArticleRepository;
+        IMapper _mapper;
 
-        public BlogArticleServices(IBlogArticleRepository blogArticleRepository)
+        public BlogArticleServices(IBlogArticleRepository blogArticleRepository,IMapper mapper)
         {
             _blogArticleRepository = blogArticleRepository;
+            baseDal = blogArticleRepository;
+            _mapper = mapper;
         }
 
         #endregion
@@ -74,18 +78,20 @@ namespace YBlog.Core.Services
             blogArticle.BTraffic += 1;
             await _blogArticleRepository.Update(blogArticle, new List<string> { "BTraffic" });
 
-            BlogViewModel models = new BlogViewModel()
-            {
-                BSubmitter = blogArticle.BSubmitter,
-                BTitle = blogArticle.BTitle,
-                BCategory = blogArticle.BCategory,
-                BContent = blogArticle.BContent,
-                BTraffic = blogArticle.BTraffic,
-                BCommentNum = blogArticle.BCommentNum,
-                BUpdateTime = blogArticle.BUpdateTime,
-                BCreateTime = blogArticle.BCreateTime,
-                BRemark = blogArticle.BRemark,
-            };
+            //BlogViewModel models = new BlogViewModel()
+            //{
+            //    BSubmitter = blogArticle.BSubmitter,
+            //    BTitle = blogArticle.BTitle,
+            //    BCategory = blogArticle.BCategory,
+            //    BContent = blogArticle.BContent,
+            //    BTraffic = blogArticle.BTraffic,
+            //    BCommentNum = blogArticle.BCommentNum,
+            //    BUpdateTime = blogArticle.BUpdateTime,
+            //    BCreateTime = blogArticle.BCreateTime,
+            //    BRemark = blogArticle.BRemark,
+            //};
+
+            BlogViewModel models = _mapper.Map<BlogViewModel>(blogArticle);
 
             if (nextblog != null)
             {

@@ -114,5 +114,78 @@
             Post
             </summary>
         </member>
+        <member name="T:YBlog.Core.Models.ViewModels.BlogViewModel">
+            <summary>
+            博客信息展示类
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BId">
+            <summary>
+            Blog Id
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BSubmitter">
+            <summary>/// 创建人
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BTitle">
+            <summary>/// 博客标题
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.Digest">
+            <summary>/// 摘要
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.Previous">
+            <summary>
+            上一篇
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.PreviousId">
+            <summary>
+            上一篇id
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.Next">
+            <summary>
+            下一篇
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.NextId">
+            <summary>
+            下一篇id
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BCategory">
+            <summary>/// 类别
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BContent">
+            <summary>/// 内容
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BTraffic">
+            <summary>
+            访问量
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BCommentNum">
+            <summary>
+            评论数量
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BUpdateTime">
+            <summary>/// 修改时间
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BCreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:YBlog.Core.Models.ViewModels.BlogViewModel.BRemark">
+            <summary>/// 备注
+            </summary>
+        </member>
     </members>
 </doc>

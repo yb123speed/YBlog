@@ -54,6 +54,11 @@
             职能
             </summary>
         </member>
+        <member name="M:YBlog.Core.AutoMapper.CustomProfile.#ctor">
+            <summary>
+            配置构造函数，用来创建关系映射
+            </summary>
+        </member>
         <member name="T:YBlog.Core.Controllers.BlogController">
             <summary>
             博客
@@ -77,7 +82,7 @@
         </member>
         <member name="M:YBlog.Core.Controllers.BlogController.Get(System.Int32)">
             <summary>
-            根据id查询Advertisement
+            根据id查询Blog
             </summary>
             <param name="id"></param>
             <returns></returns>

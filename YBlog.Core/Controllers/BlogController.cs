@@ -59,15 +59,15 @@ namespace YBlog.Core.Controllers
 
         // GET: api/Blog/5
         /// <summary>
-        /// 根据id查询Advertisement
+        /// 根据id查询Blog
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}", Name = "Get")]
-        public async Task<Advertisement> Get(int id)
+        public async Task<object> Get(int id)
         {
-            //IAdvertisementServices advertisementServices = new AdvertisementServices();
-            return await _advertisementServices.QueryByID(id);
+            var model = await _blogArticleServices.GetBlogDetails(id);
+            return new { success = true, data = model };
         }
 
         // POST: api/Blog
