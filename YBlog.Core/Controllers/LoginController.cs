@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using YBlog.Core.AuthHelper;
@@ -11,6 +12,7 @@ namespace YBlog.Core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("LimitRequests")]
     public class LoginController : ControllerBase
     {
         /// <summary>
