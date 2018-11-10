@@ -26,6 +26,7 @@ using YBlog.Core.AuthHelper;
 using YBlog.Core.IServices;
 using YBlog.Core.Repository;
 using YBlog.Core.Services;
+using static YBlog.Core.SwaggerHelper.CustomApiVersion;
 
 namespace YBlog.Core
 {
@@ -37,6 +38,8 @@ namespace YBlog.Core
         }
 
         public IConfiguration Configuration { get; }
+
+        private const string ApiName = "YBlog.Core";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -86,16 +89,30 @@ namespace YBlog.Core
             #region Swagger
             services.AddSwaggerGen(o =>
             {
-                o.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
-                    Version = "v0.1.0",
-                    Title = "YBlog.Core API",
-                    Description = "框架说明文档",
-                    TermsOfService = "None",
-                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact{
-                        Name = "YBlog.Core",
-                        Email = "yb123speed@outlook.com",
-                        Url = "http://www.chaney.club"
-                    }
+                //o.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                //    Version = "v0.1.0",
+                //    Title = "YBlog.Core API",
+                //    Description = "框架说明文档",
+                //    TermsOfService = "None",
+                //    Contact = new Swashbuckle.AspNetCore.Swagger.Contact{
+                //        Name = "YBlog.Core",
+                //        Email = "yb123speed@outlook.com",
+                //        Url = "http://www.chaney.club"
+                //    }
+                //});
+
+                //遍历出全部的版本，做文档信息展示
+                typeof(ApiVersions).GetEnumNames().ToList().ForEach(version =>
+                {
+                    o.SwaggerDoc(version, new Info
+                    {
+                        // {ApiName} 定义成全局变量，方便修改
+                        Version = version,
+                        Title = $"{ApiName} 接口文档",
+                        Description = $"{ApiName} HTTP API " + version,
+                        TermsOfService = "None",
+                        Contact = new Contact { Name = "YBlog.Core", Email = "yb123speed@outlook.com", Url = "http://www.chaney.club" }
+                    });
                 });
 
                 #region 读取xml信息
@@ -218,18 +235,27 @@ namespace YBlog.Core
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                #region Swagger
-                app.UseSwagger();
-                app.UseSwaggerUI(o =>
-                {
-                    o.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
-                });
-                #endregion
             }
             else
             {
                 app.UseHsts();
             }
+
+            #region Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(o =>
+            {
+                //之前是写死的
+                //o.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+                //o.RoutePrefix = "";//路径配置，设置为空，表示直接在根域名（localhost:8001）访问该文件
+
+                //根据版本名称倒序 遍历展示
+                typeof(ApiVersions).GetEnumNames().OrderByDescending(e => e).ToList().ForEach(v =>
+                {
+                    o.SwaggerEndpoint($"/swagger/{v}/swagger.json", $"{ApiName} {v}");
+                });
+            });
+            #endregion
 
             //app.UseHttpsRedirection();
             app.UseJwtTokenAuthMiddleware();

@@ -138,5 +138,10 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="T:YBlog.Core.SwaggerHelper.CustomApiVersion">
+            <summary>
+            自定义版本
+            </summary>
+        </member>
     </members>
 </doc>
