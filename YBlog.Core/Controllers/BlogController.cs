@@ -109,5 +109,14 @@ namespace YBlog.Core.Controllers
             }
             return blogs;
         }
+
+        [HttpGet]
+        [ApiExplorerSettings(GroupName = "v2")]
+        //路径 如果以 / 开头，表示绝对路径，反之相对 controller 的相对路径
+        [Route("/api/v2/blog/Blogtest")]
+        public object V2_Blogtest()
+        {
+            return Ok(new { status = 220, data = "我是第二版的博客信息" });
+        }
     }
 }
