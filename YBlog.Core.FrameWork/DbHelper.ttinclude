@@ -346,8 +346,8 @@
     {
     //连接字符串格式    
         //public static readonly string ConnectionString = "Data Source=.;Initial Catalog=WMBlogDB;User ID=sa;Password=666;";
-        public static readonly string ConnectionString = @"E:\Git\YBlog\YBlog.Core.Repository\dbconnection.txt";
-        public static readonly string DbDatabase = "";
+        public static readonly string ConnectionString = @"server=BEEBEEPRICE\MSSQLSERVER2012;uid=sa;pwd=123abc@;database=YBlog";
+        public static readonly string DbDatabase = "YBlog";
         public static readonly string TableName = "";//如果想针对某一个表生成，可以填写表名
     }
 #>
