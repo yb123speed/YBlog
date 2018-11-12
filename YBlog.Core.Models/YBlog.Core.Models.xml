@@ -109,6 +109,66 @@
             备注
             </summary>
         </member>
+        <member name="T:YBlog.Core.Models.Models.Guestbook">
+            <summary>
+            Guestbook
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.Module">
+            <summary>
+            Module
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.ModulePermission">
+            <summary>
+            ModulePermission
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.OperateLog">
+            <summary>
+            OperateLog
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.PasswordLib">
+            <summary>
+            PasswordLib
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.Permission">
+            <summary>
+            Permission
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.Role">
+            <summary>
+            Role
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.RoleModulePermission">
+            <summary>
+            RoleModulePermission
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.sysUserInfo">
+            <summary>
+            sysUserInfo
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.Topic">
+            <summary>
+            Topic
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.TopicDetail">
+            <summary>
+            TopicDetail
+            </summary>	
+        </member>
+        <member name="T:YBlog.Core.Models.Models.UserRole">
+            <summary>
+            UserRole
+            </summary>	
+        </member>
         <member name="T:YBlog.Core.Models.Post">
             <summary>
             Post
