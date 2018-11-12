@@ -9,6 +9,22 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>YBlog.Core.FrameWork.Entity.cs</LastGenOutput>
     </None>
+    <None Update="YBlog.Core.FrameWork.IRepository\YBlog.Core.FrameWork.IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YBlog.Core.FrameWork.IRepository.cs</LastGenOutput>
+    </None>
+    <None Update="YBlog.Core.FrameWork.IServices\YBlog.Core.FrameWork.IServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YBlog.Core.FrameWork.IServices.cs</LastGenOutput>
+    </None>
+    <None Update="YBlog.Core.FrameWork.Services\YBlog.Core.FrameWork.Services.tt">
+      <LastGenOutput>YBlog.Core.FrameWork.Services.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="YBlog.Core.FrameWork.Repository\YBlog.Core.FrameWork.Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YBlog.Core.FrameWork.Repository.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +36,26 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>YBlog.Core.FrameWork.Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="YBlog.Core.FrameWork.IRepository\YBlog.Core.FrameWork.IRepository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>YBlog.Core.FrameWork.IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Update="YBlog.Core.FrameWork.IServices\YBlog.Core.FrameWork.IServices.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>YBlog.Core.FrameWork.IServices.tt</DependentUpon>
+    </Compile>
+    <Compile Update="YBlog.Core.FrameWork.Services\YBlog.Core.FrameWork.Services.cs">
+      <DependentUpon>YBlog.Core.FrameWork.Services.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="YBlog.Core.FrameWork.Repository\YBlog.Core.FrameWork.Repository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>YBlog.Core.FrameWork.Repository.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
