@@ -32,7 +32,7 @@ namespace YBlog.Core.AuthHelper
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var jwt = new JwtSecurityToken(
-                issuer: "Blog.Core",
+                issuer: "YBlog.Core",
                 claims: claims, //声明集合
                 expires: dateTime.AddHours(2),
                 signingCredentials: creds);
