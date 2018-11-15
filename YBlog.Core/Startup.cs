@@ -9,6 +9,9 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.DynamicProxy;
 using AutoMapper;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +26,9 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using YBlog.Core.AOP;
 using YBlog.Core.AuthHelper;
+using YBlog.Core.Filters;
 using YBlog.Core.IServices;
+using YBlog.Core.Log;
 using YBlog.Core.Repository;
 using YBlog.Core.Services;
 using static YBlog.Core.SwaggerHelper.CustomApiVersion;
@@ -35,21 +40,37 @@ namespace YBlog.Core
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            #region Log4Net
+
+            repository = LogManager.CreateRepository(Assembly.GetExecutingAssembly().GetName().Name); //需要获取日志的仓库名，也就是你的当然项目名
+            //指定配置文件
+            XmlConfigurator.Configure(repository, new FileInfo("log4net.config")); //配置文件
+            #endregion
         }
 
         public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// log4net 仓储库
+        /// </summary>
+        public static ILoggerRepository repository { get; set; }
 
         private const string ApiName = "YBlog.Core";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(o=>
+            {
+                o.Filters.Add(typeof(GlobalExceptionsFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             #region 依赖注入
 
             services.AddScoped<ICaching, MemoryCaching>();
             services.AddScoped<IRedisCacheManager, RedisCacheManager>();
+            services.AddSingleton<ILoggerHelper, LogHelper>();
 
             #endregion
 
