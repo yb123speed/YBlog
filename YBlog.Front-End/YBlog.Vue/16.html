@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function blog(b1)
+    {
+        if(b1) 
+        {
+           var foo = "Blog";
+        }
+        console.log(foo); //Blog
+    }
+
+    blog(true); //foo的作用域在function内部
+    blog(false);
+    //console.log(foo); //报错  如果去掉 var则正确
+    //结果 Blog undefined 报错
+
+    console.log("-----------------------------------------------------------------------------")
+
+    function Blog(b1)
+    {
+        if(b1) 
+        {
+           let foo = "Blog";
+        }
+        else
+        {
+           console.log(foo); //Blog
+        }
+    }
+
+    Blog(true); //foo的作用域在if内部
+    //Blog(false);
+    //console.log(foo); 
+    //结果 执行 报错 报错
+
+    const foo1='Blog';
+    function Blog1(bool) {
+        if (bool) {
+            foo1 = "Vue";
+        } else {
+            console.log(foo1);
+        }
+    }
+    //Blog1(true); //这里会报错 Identifier 'foo' has already been declared
+    Blog1(false); // Blog
+    console.log(foo1); //Blog
+    //结果 报错 Blog Blog
+</script>
+</html>
