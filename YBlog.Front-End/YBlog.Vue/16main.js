@@ -1,7 +1,8 @@
+import { Student } from './Student';
 const st = new Student([
     'blog',
     'api',
-    'vue'
+    'vue',
 ]);
 
 st.study();

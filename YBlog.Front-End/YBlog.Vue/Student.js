@@ -1,4 +1,4 @@
-export class Student{
+export class Student {
     constructor (homework=[]){
         this.homework = homework;
     }
