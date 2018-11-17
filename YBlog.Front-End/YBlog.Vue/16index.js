@@ -7,11 +7,3 @@ class Student{
         console.log(this.homework);
     }
 }
-
-const st = new Student([
-    'blog',
-    'api',
-    'vue'
-]);
-
-st.study();
