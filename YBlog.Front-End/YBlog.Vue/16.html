@@ -55,5 +55,34 @@
     Blog1(false); // Blog
     console.log(foo1); //Blog
     //结果 报错 Blog Blog
+
+    /*
+    ** 表达式
+    */
+    //字符串表达式
+    var bid = 1;
+    var aid = 2;
+    var id = 3;
+    // old
+    var name = 'id is ' + bid + ' ' + aid + '.';
+    var url = 'http://localhost:5000/api/vaules/' + id;
+    console.log('name:' + name);
+    console.log('url:' + url);
+    // new
+    var name = `id is ${bid} ${aid}.`;
+    var url = `http://localhost:5000/api/vaules/${id}`;
+    console.log('name:' + name);
+    console.log('url:' + url);
+    
+    /**
+    *** 多行表达式
+    **/
+    var roadPoem = `这个是一个段落
+        换了一行
+         增加了些内容，
+         dddddddddddddddd
+         结尾，`
+    console.log(roadPoem);
+
 </script>
 </html>
