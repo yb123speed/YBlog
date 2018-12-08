@@ -19,7 +19,7 @@ namespace YBlog.Core.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Policy = "Admin")]
+    [Authorize(Policy = "Admin")]
     public class BlogController : ControllerBase
     {
         #region private fields and constructor

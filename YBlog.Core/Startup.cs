@@ -159,7 +159,7 @@ namespace YBlog.Core
                 //方案名称"YBlog.Core"可自定义，上下一致即可
                 o.AddSecurityDefinition("YBlog.Core", new ApiKeyScheme
                 {
-                    Description = "JWT授权（数据将在请求头中进行传输）直接在下框输入{token}",
+                    Description = "JWT授权（数据将在请求头中进行传输）直接在下框输入`Bearer {token}`",
                     Name = "Authorization", //jwt默认的参数名称
                     In = "header", //jwt默认存放Authorization信息的位置（请求头中）
                     Type = "apiKey"
@@ -194,7 +194,7 @@ namespace YBlog.Core
                     ValidateIssuer = true,//是否验证Issuer
                     ValidateAudience = true,//是否验证Audience 
                     ValidateIssuerSigningKey = true,//是否验证IssuerSigningKey 
-                    ValidIssuer = "Blog.Core",
+                    ValidIssuer = "YBlog.Core",
                     ValidAudience = "wr",
                     ValidateLifetime = true,//是否验证超时  当设置exp和nbf时有效 同时启用ClockSkew 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtHelper.secretKey)),
@@ -215,7 +215,7 @@ namespace YBlog.Core
             {
                 o.AddPolicy("Client", policy => policy.RequireRole("Client").Build());
                 o.AddPolicy("Admin", policy => policy.RequireRole("Admin").Build());
-                o.AddPolicy("AdminOrClient", policy => policy.RequireRole("Admin","Client").Build());
+                o.AddPolicy("AdminOrClient", policy => policy.RequireRole("Admin","Client"));
             });
             #endregion
 
