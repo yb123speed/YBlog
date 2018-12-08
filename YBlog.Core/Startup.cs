@@ -215,6 +215,9 @@ namespace YBlog.Core
             {
                 o.AddPolicy("Client", policy => policy.RequireRole("Client").Build());
                 o.AddPolicy("Admin", policy => policy.RequireRole("Admin").Build());
+                //这个写法是错误的，这个是并列的关系，不是或的关系
+                //options.AddPolicy("AdminOrClient", policy => policy.RequireRole("Admin,Client").Build());
+                //这个才是或的关系
                 o.AddPolicy("AdminOrClient", policy => policy.RequireRole("Admin","Client"));
             });
             #endregion
