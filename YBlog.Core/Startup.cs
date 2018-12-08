@@ -176,20 +176,30 @@ namespace YBlog.Core
             })
             .AddJwtBearer(o => 
             {
-                o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = "YBlog.Core",
+                    //ValidIssuer = "YBlog.Core",
+                    //ValidAudience = "wr",
+                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtHelper.secretKey)),
+                    //RequireSignedTokens = true,
+                    //// 将下面两个参数设置为false，可以不验证Issuer和Audience，但是不建议这样做。
+                    //ValidateAudience = false,
+                    //ValidateIssuer = true,
+                    //ValidateIssuerSigningKey = true,
+                    //// 是否要求Token的Claims中必须包含 Expires
+                    //RequireExpirationTime = true,
+                    //// 是否验证Token有效期，使用当前时间与Token的Claims中的NotBefore和Expires对比
+                    //ValidateLifetime = true
+
+                    ValidateIssuer = true,//是否验证Issuer
+                    ValidateAudience = true,//是否验证Audience 
+                    ValidateIssuerSigningKey = true,//是否验证IssuerSigningKey 
+                    ValidIssuer = "Blog.Core",
                     ValidAudience = "wr",
+                    ValidateLifetime = true,//是否验证超时  当设置exp和nbf时有效 同时启用ClockSkew 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtHelper.secretKey)),
-                    RequireSignedTokens = true,
-                    // 将下面两个参数设置为false，可以不验证Issuer和Audience，但是不建议这样做。
-                    ValidateAudience = false,
-                    ValidateIssuer = true,
-                    ValidateIssuerSigningKey = true,
-                    // 是否要求Token的Claims中必须包含 Expires
-                    RequireExpirationTime = true,
-                    // 是否验证Token有效期，使用当前时间与Token的Claims中的NotBefore和Expires对比
-                    ValidateLifetime = true
+                    //注意这是缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
+                    ClockSkew = TimeSpan.FromSeconds(30)
                 };
             });
             #endregion
@@ -279,7 +289,8 @@ namespace YBlog.Core
             #endregion
 
             //app.UseHttpsRedirection();
-            app.UseJwtTokenAuthMiddleware();
+            //app.UseJwtTokenAuthMiddleware();
+            app.UseAuthentication();
 
             app.UseCors("LimitRequests"); //将 CORS 中间件添加到 web 应用程序管线中, 以允许跨域请求。有的不加也是可以的，最好是加上吧
 
