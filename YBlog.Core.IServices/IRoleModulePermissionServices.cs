@@ -4,6 +4,8 @@
 
 using System;
 using YBlog.Core.Models.Models;using YBlog.Core.IServices.Base;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace YBlog.Core.IServices
 {	
@@ -12,8 +14,7 @@ namespace YBlog.Core.IServices
 	/// </summary>	
     public interface IRoleModulePermissionServices :IBaseServices<RoleModulePermission>
 	{
-
-       
+        Task<List<RoleModulePermission>> GetRoleModule();
     }
 }
 

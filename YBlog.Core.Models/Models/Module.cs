@@ -1,79 +1,83 @@
 
-	//----------Module开始----------
-    
+//----------Module开始----------
+
 using System;
 namespace YBlog.Core.Models.Models
-{	
-	/// <summary>
-	/// Module
-	/// </summary>	
-	public class Module//可以在这里加上基类等
-	{
-	//将该表下的字段都遍历出来，可以自定义获取数据描述等信息
+{
+    /// <summary>
+    /// 接口API地址信息表
+    /// </summary>	
+    public class Module
+    {
+        public int Id { get; set; }
 
+        public bool? IsDeleted { get; set; }
 
-	  public int  Id { get; set; }
+        /// <summary>
+        /// 父ID
+        /// </summary>
+        public int? ParentId { get; set; }
 
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name { get; set; }
 
-	  public bool  ? IsDeleted { get; set; }
+        /// <summary>
+        /// API链接地址
+        /// </summary>
+        public string LinkUrl { get; set; }
 
+        public string Area { get; set; }
 
-	  public int  ? ParentId { get; set; }
+        /// <summary>
+        /// 控制器名称
+        /// </summary>
+        public string Controller { get; set; }
 
+        /// <summary>
+        /// Action名称
+        /// </summary>
+        public string Action { get; set; }
 
-	  public string  Name { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public string Icon { get; set; }
 
+        /// <summary>
+        /// 菜单编号
+        /// </summary>
+        public string Code { get; set; }
 
-	  public string  LinkUrl { get; set; }
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public int OrderSort { get; set; }
 
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Description { get; set; }
 
-	  public string  Area { get; set; }
+        public bool IsMenu { get; set; }
 
+        /// <summary>
+        /// 是否激活
+        /// </summary>
+        public bool Enabled { get; set; }
 
-	  public string  Controller { get; set; }
+        public int? CreateId { get; set; }
 
+        public string CreateBy { get; set; }
 
-	  public string  Action { get; set; }
+        public DateTime? CreateTime { get; set; }
 
+        public int? ModifyId { get; set; }
 
-	  public string  Icon { get; set; }
+        public string ModifyBy { get; set; }
 
-
-	  public string  Code { get; set; }
-
-
-	  public int  OrderSort { get; set; }
-
-
-	  public string  Description { get; set; }
-
-
-	  public bool  IsMenu { get; set; }
-
-
-	  public bool  Enabled { get; set; }
-
-
-	  public int  ? CreateId { get; set; }
-
-
-	  public string  CreateBy { get; set; }
-
-
-	  public DateTime  ? CreateTime { get; set; }
-
-
-	  public int  ? ModifyId { get; set; }
-
-
-	  public string  ModifyBy { get; set; }
-
-
-	  public DateTime  ? ModifyTime { get; set; }
- 
-
+        public DateTime? ModifyTime { get; set; }
     }
 }
 
-	//----------Module结束----------
-	
