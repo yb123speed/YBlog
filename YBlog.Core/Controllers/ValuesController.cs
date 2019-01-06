@@ -14,6 +14,7 @@ namespace YBlog.Core.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = "Admin")]
+    [Authorize("Permission")]
     public class ValuesController : ControllerBase
     {
         // GET api/values
