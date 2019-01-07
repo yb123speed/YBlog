@@ -34,7 +34,7 @@ namespace YBlog.Core.AuthHelper
                 new Claim(JwtRegisteredClaimNames.Iat,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),
                 new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),
                 //过期时间，目前是过期100秒，可以自定义，注意Jwt有自己的缓冲过期时间
-                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddSeconds(100)).ToUnixTimeSeconds()}"),
+                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddHours(2)).ToUnixTimeSeconds()}"),
                 new Claim(JwtRegisteredClaimNames.Iss,"YBlog.Core"),
                 new Claim(JwtRegisteredClaimNames.Aud,"wr"),
                 //这个Role是官方UseAuthentication要验证的Role,我们不用手动设置这个Role的属性了

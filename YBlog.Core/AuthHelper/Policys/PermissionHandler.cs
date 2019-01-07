@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -106,8 +107,9 @@ namespace YBlog.Core.AuthHelper
                     }
 
                     //判断过期时间
-                    if ((httpContext.User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.Expiration)?.Value) != null &&
-                        DateTime.Parse(httpContext.User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.Expiration)?.Value) >= DateTime.Now)
+                    var expire = httpContext.User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.Expiration || s.Type == JwtRegisteredClaimNames.Exp)?.Value;
+                    if (!string.IsNullOrWhiteSpace(expire) &&
+                        DateTimeHelper.GetTime(expire) >= DateTime.Now)
                     {
                         context.Succeed(requirement);
                     }
