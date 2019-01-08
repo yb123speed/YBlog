@@ -115,7 +115,7 @@ dotnet new -i D:\myTpl\temple\BlogCoreTemple
 </package>
 ```
 
-![ ](https://raw.githubusercontent.com/yb123speed/YBlog/temple/images/1.png)
+![目录结构](https://raw.githubusercontent.com/yb123speed/YBlog/master/temple/images/1.png)
 
 ### 2.下载Nuget.exe
 
@@ -140,7 +140,7 @@ nuget pack D:\YBlog.Core\temple\YBlogCoreTemple\YBlog.Core.Webapi.Template.nuspe
 
 1. 选择 nuget.org 顶部菜单中的“上传”，并浏览到包位置。
 
-![在 nuget.org 上上传包](https://raw.githubusercontent.com/yb123speed/YBlog/temple/images/publish_uploadyourpackage)
+![在 nuget.org 上上传包](https://raw.githubusercontent.com/yb123speed/YBlog/master/temple/images/publish_uploadyourpackage.png)
 
 nuget.org 告知包名称是否可用。 如果无法使用，则更改项目中的包标识符、重新生成，并重试上传。
 
