@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YBlog.Core.Common\YBlog.Core.Common.csproj" />
+    <ProjectReference Include="..\YBlog.Core.IRepository\YBlog.Core.IRepository.csproj" />
+    <ProjectReference Include="..\YBlog.Core.IServices\YBlog.Core.IServices.csproj" />
+    <ProjectReference Include="..\YBlog.Core.Repository\YBlog.Core.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
